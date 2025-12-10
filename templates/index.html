@@ -38,22 +38,6 @@
             line-height: 1.6;
         }
 
-        /* Background Pattern */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
         /* Header */
         header {
             background: rgba(17, 24, 39, 0.8);
@@ -445,18 +429,6 @@
             text-align: center;
         }
 
-        .empty-state-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--bg-tertiary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
         .empty-state h3 {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
@@ -498,26 +470,6 @@
             margin: 1rem;
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-muted);
-        }
-
-        /* Schema Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -645,7 +597,6 @@
             color: var(--accent-secondary);
         }
 
-        /* Responsive */
         @media (max-width: 1200px) {
             .container {
                 grid-template-columns: 1fr;
@@ -696,10 +647,10 @@
             </div>
             <div style="display: flex; gap: 0.75rem;">
                 <button class="btn btn-secondary" onclick="showSchema()">
-                    <span></span> Schema
+                    Schema
                 </button>
                 <button class="btn btn-secondary" onclick="window.location.reload()">
-                    <span></span> Aktualisieren
+                    Aktualisieren
                 </button>
             </div>
         </div>
@@ -708,12 +659,10 @@
     <div class="container">
         <aside class="sidebar">
             <div class="stats-grid" id="statsGrid">
-                <!-- Stats will be loaded dynamically -->
             </div>
 
             <div class="query-section">
                 <div class="section-header">
-                    <span></span>
                     <span class="section-title">Vordefinierte Abfragen</span>
                 </div>
                 <div class="query-list" id="queryList">
@@ -731,11 +680,10 @@
             <div class="custom-query-section">
                 <div class="custom-query-header">
                     <div class="section-header" style="border: none; padding: 0;">
-                        <span>⚡</span>
                         <span class="section-title">Eigene SQL-Abfrage</span>
                     </div>
                     <button class="btn btn-primary" onclick="executeCustomQuery()">
-                        <span></span> Ausführen
+                        Ausführen
                     </button>
                 </div>
                 <div class="query-input-container">
@@ -764,7 +712,6 @@
 
                 <div id="resultsContainer">
                     <div class="empty-state">
-                        <div class="empty-state-icon"></div>
                         <h3>Keine Abfrage ausgeführt</h3>
                         <p>Wählen Sie eine vordefinierte Abfrage aus der Liste oder schreiben Sie Ihre eigene SQL-Abfrage.</p>
                     </div>
@@ -945,7 +892,6 @@
             if (data.results.length === 0) {
                 document.getElementById('resultsContainer').innerHTML = `
                     <div class="empty-state">
-                        <div class="empty-state-icon">📭</div>
                         <h3>Keine Ergebnisse</h3>
                         <p>Die Abfrage lieferte keine Daten.</p>
                     </div>
@@ -1014,7 +960,7 @@
                     for (const [tableName, tableInfo] of Object.entries(data)) {
                         html += `
                             <div class="schema-table">
-                                <h3>📊 ${tableName} <span style="font-weight: normal; color: var(--text-muted);">(${tableInfo.row_count} Einträge)</span></h3>
+                                <h3>${tableName} <span style="font-weight: normal; color: var(--text-muted);">(${tableInfo.row_count} Einträge)</span></h3>
                                 <div class="schema-columns">
                         `;
                         
