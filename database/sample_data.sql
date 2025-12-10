@@ -21,7 +21,7 @@ INSERT INTO Unternehmen (Name, Branche, Land) VALUES
 ('NVIDIA Corporation', 'Halbleiter', 'USA'),
 ('Tesla Inc.', 'Automobil', 'USA');
 
--- Aktien (mit realistischen ISINs und Kursen)
+-- Aktien
 INSERT INTO Aktie (ISIN, UnternehmenID, Ticker, Waehrung, AktuellerKurs) VALUES
 ('DE0007236101', 1, 'SIE', 'EUR', 178.50),
 ('DE0007164600', 2, 'SAP', 'EUR', 185.20),
@@ -39,37 +39,37 @@ INSERT INTO Aktie (ISIN, UnternehmenID, Ticker, Waehrung, AktuellerKurs) VALUES
 ('US67066G1040', 14, 'NVDA', 'USD', 875.30),
 ('US88160R1014', 15, 'TSLA', 'USD', 248.60);
 
--- Investoren (realistische deutsche Namen und Adressen)
+-- Investoren
 INSERT INTO Investor (Nachname, Vorname, EMail, Strasse, PLZ, Ort) VALUES
-('Müller', 'Hans', 'hans.mueller@email.de', 'Hauptstraße 15', '80331', 'München'),
-('Schmidt', 'Anna', 'anna.schmidt@email.de', 'Berliner Allee 42', '10115', 'Berlin'),
-('Weber', 'Thomas', 'thomas.weber@email.de', 'Königstraße 78', '70173', 'Stuttgart'),
-('Schneider', 'Maria', 'maria.schneider@email.de', 'Zeil 23', '60313', 'Frankfurt'),
-('Fischer', 'Michael', 'michael.fischer@email.de', 'Mönckebergstraße 5', '20095', 'Hamburg'),
-('Meyer', 'Claudia', 'claudia.meyer@email.de', 'Breite Straße 89', '40213', 'Düsseldorf'),
-('Wagner', 'Stefan', 'stefan.wagner@email.de', 'Marienplatz 1', '80331', 'München'),
-('Becker', 'Julia', 'julia.becker@email.de', 'Unter den Linden 77', '10117', 'Berlin'),
-('Hoffmann', 'Christian', 'christian.hoffmann@email.de', 'Bahnhofstraße 33', '50667', 'Köln'),
-('Schulz', 'Sabine', 'sabine.schulz@email.de', 'Schillerstraße 12', '04109', 'Leipzig');
+('Müller', 'Hans', 'hans.mueller@email.ch', 'Hauptstrasse 15', '80331', 'München'),
+('Schmidt', 'Anna', 'anna.schmidt@email.ch', 'Berliner Allee 42', '10115', 'Berlin'),
+('Weber', 'Thomas', 'thomas.weber@email.ch', 'Koenigstrasse 78', '70173', 'Stuttgart'),
+('Schneider', 'Maria', 'maria.schneider@email.ch', 'Zeil 23', '60313', 'Frankfurt'),
+('Fischer', 'Michael', 'michael.fischer@email.ch', 'Moenckebergstrasse 5', '20095', 'Hamburg'),
+('Meyer', 'Claudia', 'claudia.meyer@email.ch', 'Breite Strasse 89', '40213', 'Düsseldorf'),
+('Wagner', 'Stefan', 'stefan.wagner@email.ch', 'Marienplatz 1', '80331', 'München'),
+('Becker', 'Julia', 'julia.becker@email.ch', 'Unter den Linden 77', '10117', 'Berlin'),
+('Hoffmann', 'Christian', 'christian.hoffmann@email.ch', 'Bahnhofstrasse 33', '50667', 'Köln'),
+('Schulz', 'Sabine', 'sabine.schulz@email.ch', 'Schillerstrasse 12', '04109', 'Leipzig');
 
 -- Telefonnummern (mehrere pro Investor möglich)
 INSERT INTO Telefonnummer (InvestorID, Typ, Nummer) VALUES
-(1, 'Mobil', '+49 170 1234567'),
-(1, 'Privat', '+49 89 12345678'),
-(2, 'Mobil', '+49 171 2345678'),
-(2, 'Geschäftlich', '+49 30 23456789'),
-(3, 'Mobil', '+49 172 3456789'),
-(4, 'Mobil', '+49 173 4567890'),
-(4, 'Privat', '+49 69 45678901'),
-(5, 'Mobil', '+49 174 5678901'),
-(5, 'Geschäftlich', '+49 40 56789012'),
-(6, 'Mobil', '+49 175 6789012'),
-(7, 'Mobil', '+49 176 7890123'),
-(7, 'Privat', '+49 89 78901234'),
-(7, 'Geschäftlich', '+49 89 78901235'),
-(8, 'Mobil', '+49 177 8901234'),
-(9, 'Mobil', '+49 178 9012345'),
-(10, 'Mobil', '+49 179 0123456');
+(1, 'Mobil', '+41 79 123 45 67'),
+(1, 'Privat', '+41 44 234 56 78'),
+(2, 'Mobil', '+41 78 234 56 78'),
+(2, 'Geschäftlich', '+41 31 345 67 89'),
+(3, 'Mobil', '+41 76 345 67 89'),
+(4, 'Mobil', '+41 77 456 78 90'),
+(4, 'Privat', '+41 61 567 89 01'),
+(5, 'Mobil', '+41 79 567 89 01'),
+(5, 'Geschäftlich', '+41 44 678 90 12'),
+(6, 'Mobil', '+41 78 678 90 12'),
+(7, 'Mobil', '+41 76 789 01 23'),
+(7, 'Privat', '+41 44 890 12 34'),
+(7, 'Geschäftlich', '+41 44 890 12 35'),
+(8, 'Mobil', '+41 77 890 12 34'),
+(9, 'Mobil', '+41 79 901 23 45'),
+(10, 'Mobil', '+41 78 012 34 56');
 
 -- Depots (verschiedene Status und Typen)
 INSERT INTO Depot (InvestorID, Bezeichnung, Status) VALUES
@@ -86,7 +86,7 @@ INSERT INTO Depot (InvestorID, Bezeichnung, Status) VALUES
 (9, 'Aktives Trading', 'Geschlossen'),
 (10, 'ETF Alternative', 'Aktiv');
 
--- Transaktionen (realistisches Trading über mehrere Monate)
+-- Transaktionen
 INSERT INTO Transaktionen (DepotID, ISIN, Datum, Typ, Menge, Stueckpreis, Gesamtwert) VALUES
 -- Depot 1 (Hans Müller - Hauptdepot DAX)
 (1, 'DE0007236101', '2024-01-15 09:30:00', 'Kauf', 50, 165.20, 8260.00),

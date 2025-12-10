@@ -301,9 +301,9 @@ PREDEFINED_QUERIES = {
                 i.Vorname || ' ' || i.Nachname AS Name,
                 i.EMail,
                 i.Strasse || ', ' || i.PLZ || ' ' || i.Ort AS Adresse,
-                GROUP_CONCAT(DISTINCT tel.Typ || ': ' || tel.Nummer, ' | ') AS Telefonnummern,
+                GROUP_CONCAT(tel.Typ || ': ' || tel.Nummer, ' | ') AS Telefonnummern,
                 COUNT(DISTINCT d.DepotID) AS AnzahlDepots,
-                GROUP_CONCAT(DISTINCT d.Bezeichnung || ' (' || d.Status || ')') AS Depots
+                GROUP_CONCAT(d.Bezeichnung || ' (' || d.Status || ')', ' | ') AS Depots
             FROM Investor i
             LEFT JOIN Telefonnummer tel ON i.InvestorID = tel.InvestorID
             LEFT JOIN Depot d ON i.InvestorID = d.InvestorID

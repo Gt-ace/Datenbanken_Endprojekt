@@ -1,7 +1,5 @@
--- ============================================
 -- Aktienportfolio Datenbank Schema
 -- Gruppe 9 - Datenbanken Endprojekt
--- ============================================
 
 -- Unternehmen (Company) - Master data for companies
 CREATE TABLE IF NOT EXISTS Unternehmen (
@@ -63,7 +61,7 @@ CREATE TABLE IF NOT EXISTS Depot (
     FOREIGN KEY (InvestorID) REFERENCES Investor(InvestorID)
 );
 
--- Transaktionen (Transactions) - Buy/Sell records
+-- Transaktionen - Buy/Sell records
 CREATE TABLE IF NOT EXISTS Transaktionen (
     TransaktionsID INTEGER PRIMARY KEY AUTOINCREMENT,
     DepotID INTEGER NOT NULL,
