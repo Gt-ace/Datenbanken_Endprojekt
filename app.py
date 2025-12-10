@@ -1,28 +1,3 @@
-"""
-Aktienportfolio Datenbank - Web Application
-Gruppe 9 - Datenbanken Endprojekt
-
-DBMS-Begründung:
-Wir haben SQLite als Datenbankmanagementsystem gewählt aus folgenden Gründen:
-
-1. Einfachheit: SQLite benötigt keine separate Server-Installation, die Datenbank
-   ist eine einzelne Datei, was die Portabilität maximiert.
-
-2. Perfekt für Entwicklung und Demonstration: Für ein Universitätsprojekt ist
-   SQLite ideal, da es ohne Konfiguration funktioniert.
-
-3. ACID-Konformität: SQLite unterstützt vollständige Transaktionen und garantiert
-   Datenintegrität.
-
-4. SQL-Standard: SQLite unterstützt die meisten SQL-Funktionen, die wir für
-   komplexe Abfragen benötigen.
-
-5. Ressourcenschonend: Keine separate Speichernutzung durch Datenbankserver.
-
-Für ein Produktionssystem mit vielen gleichzeitigen Benutzern würde man
-PostgreSQL oder MySQL verwenden, aber für dieses Projekt ist SQLite optimal.
-"""
-
 import sqlite3
 import os
 from flask import Flask, render_template, request, jsonify
@@ -36,7 +11,7 @@ DATA_PATH = os.path.join(os.path.dirname(__file__), 'database', 'sample_data.sql
 
 
 def get_db_connection():
-    """Create a database connection with foreign keys enabled."""
+    """Create a database connection with foreign keys enabled"""
     conn = sqlite3.connect(DATABASE_PATH)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
@@ -44,7 +19,7 @@ def get_db_connection():
 
 
 def init_database():
-    """Initialize the database with schema and sample data."""
+    """Initialize the database with schema and sample data"""
     # Ensure database directory exists
     os.makedirs(os.path.dirname(DATABASE_PATH), exist_ok=True)
     
@@ -64,8 +39,6 @@ def init_database():
     conn.commit()
     conn.close()
 
-
-# Meaningful SQL Queries that "tell a story"
 PREDEFINED_QUERIES = {
     "portfolio_overview": {
         "name": "Portfolio-Übersicht: Aktuelle Positionen und Gewinne/Verluste",
@@ -203,7 +176,7 @@ PREDEFINED_QUERIES = {
     
     "trading_activity": {
         "name": "Handelsaktivität: Transaktionsvolumen pro Monat und Investor",
-        "description": "Zeigt das monatliche Handelsvolumen - wichtig für Gebührenberechnung und Kundensegmentierung.",
+        "description": "Zeigt das monatliche Handelsvolumen",
         "query": """
             SELECT 
                 i.Vorname || ' ' || i.Nachname AS Investor,
@@ -249,7 +222,7 @@ PREDEFINED_QUERIES = {
     
     "pnl_analysis": {
         "name": "Gewinn/Verlust-Analyse: Realisierte Gewinne durch Verkäufe",
-        "description": "Berechnet die realisierten Gewinne/Verluste aus abgeschlossenen Transaktionen - wichtig für Steuerberechnung.",
+        "description": "Berechnet die realisierten Gewinne/Verluste aus abgeschlossenen Transaktionen",
         "query": """
             SELECT 
                 i.Vorname || ' ' || i.Nachname AS Investor,
@@ -278,7 +251,7 @@ PREDEFINED_QUERIES = {
     
     "regional_distribution": {
         "name": "Regionale Verteilung: Investitionen nach Ländern",
-        "description": "Analysiert wie die Investments geografisch verteilt sind - wichtig für internationale Diversifikation.",
+        "description": "Analysiert wie die Investments geografisch verteilt sind",
         "query": """
             SELECT 
                 u.Land,
@@ -298,7 +271,7 @@ PREDEFINED_QUERIES = {
     
     "depot_performance": {
         "name": "Depot-Performance: Wertentwicklung über Zeit",
-        "description": "Zeigt die historische Wertentwicklung der Depots - wichtig für Performance-Reporting.",
+        "description": "Zeigt die historische Wertentwicklung der Depots",
         "query": """
             SELECT 
                 i.Vorname || ' ' || i.Nachname AS Investor,
@@ -322,7 +295,7 @@ PREDEFINED_QUERIES = {
     
     "investor_contacts": {
         "name": "Investoren-Kontaktdaten: Vollständige Übersicht",
-        "description": "Zeigt alle Kontaktinformationen der Investoren mit ihren Depots - wichtig für Kundenservice.",
+        "description": "Zeigt alle Kontaktinformationen der Investoren mit ihren Depots",
         "query": """
             SELECT 
                 i.Vorname || ' ' || i.Nachname AS Name,
@@ -341,7 +314,7 @@ PREDEFINED_QUERIES = {
     
     "stock_popularity": {
         "name": "Aktien-Beliebtheit: Meistgehandelte Titel",
-        "description": "Zeigt welche Aktien am häufigsten gehandelt werden - wichtig für Marktanalyse.",
+        "description": "Zeigt welche Aktien am häufigsten gehandelt werden",
         "query": """
             SELECT 
                 u.Name AS Unternehmen,
@@ -528,6 +501,6 @@ if __name__ == '__main__':
     init_database()
     print("Datenbank initialisiert!")
     print("\nStarte Webserver auf http://127.0.0.1:5000")
-    print("Drücken Sie Ctrl+C zum Beenden\n")
+    print("Drücke Ctrl+C zum Beenden\n")
     app.run(debug=True, port=5000)
 
