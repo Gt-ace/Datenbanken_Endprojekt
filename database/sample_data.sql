@@ -39,18 +39,18 @@ INSERT INTO Aktie (ISIN, UnternehmenID, Ticker, Waehrung, AktuellerKurs) VALUES
 ('US67066G1040', 14, 'NVDA', 'USD', 875.30),
 ('US88160R1014', 15, 'TSLA', 'USD', 248.60);
 
--- Investoren
+-- Investoren (mit Schweizer Adressen)
 INSERT INTO Investor (Nachname, Vorname, EMail, Strasse, PLZ, Ort) VALUES
-('Müller', 'Hans', 'hans.mueller@email.ch', 'Hauptstrasse 15', '80331', 'München'),
-('Schmidt', 'Anna', 'anna.schmidt@email.ch', 'Berliner Allee 42', '10115', 'Berlin'),
-('Weber', 'Thomas', 'thomas.weber@email.ch', 'Koenigstrasse 78', '70173', 'Stuttgart'),
-('Schneider', 'Maria', 'maria.schneider@email.ch', 'Zeil 23', '60313', 'Frankfurt'),
-('Fischer', 'Michael', 'michael.fischer@email.ch', 'Moenckebergstrasse 5', '20095', 'Hamburg'),
-('Meyer', 'Claudia', 'claudia.meyer@email.ch', 'Breite Strasse 89', '40213', 'Düsseldorf'),
-('Wagner', 'Stefan', 'stefan.wagner@email.ch', 'Marienplatz 1', '80331', 'München'),
-('Becker', 'Julia', 'julia.becker@email.ch', 'Unter den Linden 77', '10117', 'Berlin'),
-('Hoffmann', 'Christian', 'christian.hoffmann@email.ch', 'Bahnhofstrasse 33', '50667', 'Köln'),
-('Schulz', 'Sabine', 'sabine.schulz@email.ch', 'Schillerstrasse 12', '04109', 'Leipzig');
+('Müller', 'Hans', 'hans.mueller@email.ch', 'Bahnhofstrasse 15', '8001', 'Zürich'),
+('Schmidt', 'Anna', 'anna.schmidt@email.ch', 'Bundesplatz 42', '3011', 'Bern'),
+('Weber', 'Thomas', 'thomas.weber@email.ch', 'Rue du Rhône 78', '1204', 'Genf'),
+('Schneider', 'Maria', 'maria.schneider@email.ch', 'Freie Strasse 23', '4001', 'Basel'),
+('Fischer', 'Michael', 'michael.fischer@email.ch', 'Via Nassa 5', '6900', 'Lugano'),
+('Meyer', 'Claudia', 'claudia.meyer@email.ch', 'Seestrasse 89', '8002', 'Zürich'),
+('Wagner', 'Stefan', 'stefan.wagner@email.ch', 'Paradeplatz 1', '8001', 'Zürich'),
+('Becker', 'Julia', 'julia.becker@email.ch', 'Kramgasse 77', '3011', 'Bern'),
+('Hoffmann', 'Christian', 'christian.hoffmann@email.ch', 'Steinenvorstadt 33', '4051', 'Basel'),
+('Schulz', 'Sabine', 'sabine.schulz@email.ch', 'Schwanengasse 12', '6004', 'Luzern');
 
 -- Telefonnummern (mehrere pro Investor möglich)
 INSERT INTO Telefonnummer (InvestorID, Typ, Nummer) VALUES
